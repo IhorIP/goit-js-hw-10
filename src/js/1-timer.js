@@ -32,8 +32,9 @@ const options = {
   onClose(selectedDates) {
     const selectedDate = selectedDates[0];
 
-    // Валідація: дата має бути в майбутньому
-    if (selectedDate < new Date()) {
+    // Валідація: дата має бути строго в майбутньому.
+    // Якщо обрана дата в минулому АБО дорівнює поточному моменту — вона недійсна
+    if (selectedDate <= new Date()) {
       iziToast.error({
         title: 'Error',
         message: 'Please choose a date in the future',
